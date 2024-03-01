@@ -1,0 +1,21 @@
+.mainHeaderWrapper{
+    width: 100%;
+    background: #fff;
+    height: 52px;
+    line-height: 52px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+.mainNavBar{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.subNavBar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchbox_div{
+    margin-right: 10px;
+}
