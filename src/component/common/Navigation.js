@@ -27,9 +27,9 @@ const Navigation = () => {
   console.log("read values ROUTE", ROUTE)
   return (
     <div className="">
-  <div className=" ">
+  <div className="nav_container">
     <div className="mainNavBar">
-        <div>
+        <div className='mt-10'>
         <a href="/" style={{ display: "inline-block", height: "inherit" }}>
             <img
             src="https://images.bewakoof.com/web/ic-desktop-bwkf-trademark-logo.svg"
@@ -51,17 +51,20 @@ const Navigation = () => {
             className=""
             style={{ position: "relative", borderBottom: "none" }}
             >
-            <input
+                <input type="text" name="" placeholder="Search for..." class="search__field"></input>
+                <button type="submit" class="fa fa-search search__icon"></button>
+              {/* <input class="search__input" type="text" placeholder="Search"></input> */}
+            {/* <input
                 className=" "
                 placeholder="Search by product, category or collection"
                 type="text"
                 autoComplete="off"
-            />
+            /> */}
             <i className="icon_search" />
             </form>
             <div className="seperator" />
         </div>
-        <div className="">
+        <div className='mto-5'>
             
             <div
                 className=""
@@ -71,9 +74,10 @@ const Navigation = () => {
                 textAlign: "right"
                 }}
             >
+              <i class="fa fa-shopping-cart ft-size"> 
                 <a href="/signin" id="loginLink" className="loginLink">
-                Login
                 </a>
+              </i>
             </div>
         </div>
         
