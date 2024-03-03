@@ -14,13 +14,21 @@ const SignUp = () => {
                 Sign Up to your account
             </h1>
             <Formik 
-            initialValues={{ email: '',
-                             password: '',
-                             confirm_password: '' }}
+            initialValues={{ 
+                            name: 'Rachit Yadav',
+                            email: '',
+                            password: '',
+                            confirm_password: '' 
+                            }}
             onSubmit={async (values, actions) => {
+              const user = {
+                name: values.name,
+                email: values.email,
+                password: values.password
+            }
               try {
                 setLoading(true);
-                const response = await axios.post('http://localhost:3000/api/v1/send_otp', mobile);
+                const response = await axios.post('http://localhost:3000/signup', {user});
                 console.log('Response:', response.data);
                 // Handle the response data as needed
               } catch (error) {

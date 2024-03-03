@@ -1,6 +1,7 @@
 import React from 'react'
 import { Formik } from 'formik';
 import { Button } from 'react-bootstrap';
+import axios from 'axios';
 
 const EmailLogIn = () => {
   return (
@@ -13,7 +14,18 @@ const EmailLogIn = () => {
                 <Formik 
                 initialValues={{ email: '',
                                  password: '' }}
-                onSubmit={(values, actions) => {
+                onSubmit={async(values, actions) => {
+                    const API_URL = 'http://localhost:3000/login'
+                    const user = {
+                        email: values.email,
+                        password: values.password
+                    }
+                    try {
+                        const response = await axios.post(`${API_URL}`, { user });
+                        return response.data;
+                      } catch (error) {
+                        throw error;
+                      }
                 setTimeout(() => {
                     alert(JSON.stringify(values, null, 2));
                     actions.setSubmitting(false);
