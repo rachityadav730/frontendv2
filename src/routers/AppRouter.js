@@ -14,6 +14,7 @@ const AppRouter = () => (
                 <Route path={ROUTES.DASHBOARD} element={<view.Dashboard />} />
                 <Route path={ROUTES.SIGNUP} element={<view.SignUp />} />
                 <Route path={ROUTES.SIGNIN} element={<view.SignIn />} />
+                <Route path={ROUTES.EMAIL} element={<view.EmailLogIn />} />
                 <Route path={ROUTES.SIGNOUT} element={<view.SignOut />} />
             </Routes>
         </>
