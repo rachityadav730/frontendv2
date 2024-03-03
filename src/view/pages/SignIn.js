@@ -52,6 +52,10 @@ const SignIn = () => {
             <div className='email-sign-in' onClick={() =>{navigate('/email_log_in')}}>
               CONTINUE WITH EMAIL
             </div>
+            <div className='email-sign-in mar-tp-10' onClick={() =>{navigate('/signup')}}>
+              Sign Up
+            </div>
+
           </div>
             
         </div>
