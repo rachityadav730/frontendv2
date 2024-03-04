@@ -4,11 +4,12 @@ import React, { useEffect, useRef } from 'react';
 import {
   Link, NavLink, useLocation
 } from 'react-router-dom';
+import { useSelector } from "react-redux"
 
 const Navigation = () => {
   const navbar = useRef(null);
   const { pathname } = useLocation();
-
+  const {total, totalItems} = useSelector((state) => state.cart) 
   const scrollHandler = () => {
     if (navbar.current && window.screen.width > 480) {
       if (window.pageYOffset >= 70) {
@@ -24,7 +25,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
-  console.log("read values ROUTE", ROUTE)
+  console.log("read values ROUTE", total,totalItems)
   return (
     <div className="">
   <div className="nav_container">
@@ -64,7 +65,7 @@ const Navigation = () => {
             </form>
             <div className="seperator" />
         </div>
-        <div className='mto-5'>
+        <div className='mto-5' style={{display: "flex"}}>
             
             <div
                 className=""
@@ -76,10 +77,20 @@ const Navigation = () => {
                 color: "black"
                 }}
             >
-                <a href="/signin" id="loginLink" className="loginLink">
+                <a href="/cart_item" id="loginLink" className="loginLink" style={{position: "relative",marginBlock: "auto"}}>
                   <i class="fa fa-shopping-cart ft-size"> </i>
                 </a>
-            
+                <span className='cart-pop-up'>
+                  <span style={{paddingRight: "5px"}}>
+                  {totalItems}
+                  </span>
+                </span>
+
+            </div>
+            <div style={{marginLeft: "7px"}}>
+              <p style={{marginBottom: "6.5px"}}> 
+                </p>
+                <h4 ><a href="/signin" style={{color: "#663399"}}>Login</a></h4>
             </div>
         </div>
         

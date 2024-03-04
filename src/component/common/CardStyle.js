@@ -1,10 +1,18 @@
 import React from 'react'
 import { Card, CardGroup, Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { addToCart } from '../../Slices/CartSlice';
+import { useDispatch } from 'react-redux';
 
 const CardStyle = ({ item_data }) => {
   console.log("item_data", item_data)
-
+  const dispatch = useDispatch();
+ 
+  const handleAddToCart = (item) => {
+      console.log("dispatching add to cart",item)
+      dispatch(addToCart(item)); 
+      return;
+  }
 
   return (
     <CardGroup>
@@ -19,7 +27,7 @@ const CardStyle = ({ item_data }) => {
                 <Card.Text>
                   {item.description}
                 </Card.Text>
-                <Button variant="success">Add to cart</Button>
+                <Button variant="success" onClick={()=>handleAddToCart(item)}>Add to cart</Button>
               </Card.Body>
             </Card>
           </Col>
