@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom
 import { createBrowserHistory } from 'history';
 import * as ROUTES from '../constants/routers';
 import * as view from '../view';
-import { Navigation } from '../component/common';
+import { Navigation, Footer} from '../component/common';
+
 export const history = createBrowserHistory();
 
 const AppRouter = () => (
@@ -16,7 +17,9 @@ const AppRouter = () => (
                 <Route path={ROUTES.SIGNIN} element={<view.SignIn />} />
                 <Route path={ROUTES.EMAIL} element={<view.EmailLogIn />} />
                 <Route path={ROUTES.SIGNOUT} element={<view.SignOut />} />
+                <Route path={ROUTES.SHOP} element={<view.Shop />} />
             </Routes>
+            <Footer/>
         </>
     </Router>
 )

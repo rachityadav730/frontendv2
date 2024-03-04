@@ -71,13 +71,15 @@ const Navigation = () => {
                 style={{
                 display: "flex",
                 alignItems: "baseline",
-                textAlign: "right"
+                textAlign: "right",
+                cursor: "pointer",
+                color: "black"
                 }}
             >
-              <i class="fa fa-shopping-cart ft-size"> 
                 <a href="/signin" id="loginLink" className="loginLink">
+                  <i class="fa fa-shopping-cart ft-size"> </i>
                 </a>
-              </i>
+            
             </div>
         </div>
         
