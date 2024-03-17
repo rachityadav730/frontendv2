@@ -19,6 +19,7 @@ const AppRouter = () => (
                 <Route path={ROUTES.SIGNOUT} element={<view.SignOut />} />
                 <Route path={ROUTES.SHOP} element={<view.Shop />} />
                 <Route path={ROUTES.CARTITEM} element={<view.RenderCartItems />} />
+                <Route path={ROUTES.SHIPPING} element={<view.ShippingData />} />
             </Routes>
             <Footer/>
         </>

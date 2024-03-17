@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react'
 import { Formik } from 'formik';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import TextField from '@mui/material/TextField';
+
 const SignUp = () => {
     const [mobile, setmobile] = useState('')
     const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ const SignUp = () => {
             </h1>
             <Formik 
             initialValues={{ 
-                            name: 'Rachit Yadav',
+                            name: '',
                             email: '',
                             password: '',
                             confirm_password: '' 
@@ -37,49 +39,69 @@ const SignUp = () => {
               } finally {
                 setLoading(false);
               }
-
-
-            setTimeout(() => {
-              
-                alert(JSON.stringify(values, null, 2));
-                actions.setSubmitting(false);
-                }, 1000);
-
-
-
             }}>
+
                 {props => (
                     <form onSubmit={props.handleSubmit}>
-                    <input
+
+                    <TextField
+                        id="outlined-basic" 
+                        type="text"
+                        onChange={props.handleChange}
+                        onBlur={props.handleBlur}
+                        value={props.values.name}
+                        className='width-50 ht-40 pad-bt-30'
+                        name="name"
+                        label="Name"
+                        variant="outlined"
+                        style={{marginBottom: "20px"}}
+                    />
+                     <br/>
+                    <div style={{marginBottom: "40px"}}>
+                    </div>
+                    <TextField
+                        id="outlined-basic" 
                         type="email"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.email}
                         className='width-50 ht-40 pad-bt-30'
                         name="email"
+                        label="Email"
+                        variant="outlined"
+                        style={{marginBottom: "20px"}}
                     />
-                    <br/>
-                    <input
+                     <br/>
+                    <div style={{marginBottom: "40px"}}>
+                    </div>
+                    <TextField
+                        id="outlined-basic" 
                         type="password"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.password}
                         className='width-50 ht-40 pad-bt-30'
                         name="password"
+                        label="Password"
+                        variant="outlined"
+                        style={{marginBottom: "20px"}}
                     />
                     <br/>
-                    <input
+                    <div style={{marginBottom: "40px"}}>
+                    </div>
+                    <TextField
+                        id="outlined-basic" 
                         type="password"
                         onChange={props.handleChange}
                         onBlur={props.handleBlur}
                         value={props.values.confirm_password}
                         className='width-50 ht-40 pad-bt-30'
                         name="confirm_password"
+                        label="Confirm password"
+                        variant="outlined"
+                        style={{marginBottom: "20px"}}
                     />
                     <br/>
-                    <p>
-                    Forgot Password?
-                    </p>
                     {props.errors.name && <div id="feedback">{props.errors.name}</div>}
                     <Button className='width-50 mar-tp-10' variant="success" type="submit">Sign Up</Button>
                     </form>

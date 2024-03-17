@@ -9,6 +9,7 @@ const store = configureStore({
   reducer: rootReducer,
 })
 function App() {
+  console.log("asdfasdf",process.env.NODE_ENV )
   return (
     <div className="App">
       <Provider store={store}>

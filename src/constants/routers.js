@@ -5,3 +5,4 @@ export const SIGNUP = '/signup';
 export const SHOP = '/shop';
 export const EMAIL = '/email_log_in';
 export const CARTITEM = '/cart_item';
+export const SHIPPING = '/order_placed';

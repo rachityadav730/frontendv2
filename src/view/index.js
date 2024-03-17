@@ -5,3 +5,6 @@ export { default as SignUp } from './pages/SignUp';
 export { default as EmailLogIn } from './pages/EmailLogIn';
 export { default as Shop } from './pages/Shop';
 export { default as RenderCartItems } from './pages/RenderCartItems';
+export { default as ShippingData } from './pages/ShippingData';
+
+

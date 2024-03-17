@@ -3,9 +3,9 @@ import { Formik } from 'formik';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
 import { currentUser } from '../../Slices/UserSlice';
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
 
 
 const EmailLogIn = () => {
@@ -34,7 +34,14 @@ const EmailLogIn = () => {
             console.log("Response:", response.data.status.data.user);
             if (response.data && response.data.status && response.data.status.data.user){
                 let user = response.data.status.data.user
-                console.log("sadfasdfasdf",user)
+                const headers = response.headers;
+                // Access specific header values
+                const contentType = headers['content-type'];
+                const authorization = headers['authorization'];
+                localStorage.setItem("accessToken", response.data.status.token);
+                localStorage.setItem("actualtoken", authorization);
+                localStorage.setItem("contentType", contentType);
+                console.log("sadfasdfasdf",response,headers,response.data.status.token)
                 handleUser(user)
                 navigate('/')
             }
@@ -50,23 +57,44 @@ const EmailLogIn = () => {
       >
         {props => (
           <form onSubmit={props.handleSubmit}>
-            <input
+
+            {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" /> */}
+            <TextField
+              id="outlined-basic" 
               type="email"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
               value={props.values.email}
               className='width-50 ht-40 pad-bt-30'
               name="email"
+              label="Email"
+              variant="outlined"
             />
             <br/>
-            <input
+            <div style={{marginBottom: "40px"}}>
+            </div>
+
+            <TextField
+              id="outlined-basic" 
               type="password"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
               value={props.values.password}
               className='width-50 ht-40 pad-bt-30'
               name="password"
+              label="Password"
+              variant="outlined"
+              style={{marginBottom: "20px"}}
             />
+
+            {/* <input
+              type="password"
+              onChange={props.handleChange}
+              onBlur={props.handleBlur}
+              value={props.values.password}
+              className='width-50 ht-40 pad-bt-30'
+              name="password"
+            /> */}
             <br/>
             {props.errors.name && <div id="feedback">{props.errors.name}</div>}
             <Button className='width-50 mar-tp-10' variant="warning" type="submit">LOGIN</Button>

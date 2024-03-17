@@ -5,10 +5,12 @@ import { FaBeer } from "react-icons/fa";
 import { removeFromCart } from "../../Slices/CartSlice";
 import Button from 'react-bootstrap/Button';
 import { addToCart } from '../../Slices/CartSlice';
+import { useNavigate } from "react-router-dom";
 
 
 export default function RenderCartItems() {
     const { cart,total } = useSelector((state) => state.cart);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     console.log("dadasd", cart)
     // const {total, totalItems} = useSelector((state) => state.cart) 
@@ -30,7 +32,7 @@ export default function RenderCartItems() {
                         <h3>Total: <span>&#8377;</span>{total}</h3>
                     </div>
                     <div style={{width: "50%", paddingLeft: "30%"}}>
-                    <Button  style={{backgroundColor: "#42a2a2", border: "none", width: "100%", height: "60px", fontSize: "30px"}}>Continue</Button>{' '}
+                    <Button onClick={()=>{ navigate('/order_placed')}} style={{backgroundColor: "#42a2a2", border: "none", width: "100%", height: "60px", fontSize: "30px"}}>Continue</Button>{' '}
                     </div>
                 </div>
                 <hr/>
