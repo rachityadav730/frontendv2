@@ -44,14 +44,14 @@ export default function RenderCartItems() {
                         {/* <div>{dataObj.name}</div> */}
                         <div>
                             <img
-                                src={dataObj.img_url}
+                                src={dataObj.permalink}
                                 width={200}
                                 height={150}
                                 alt=""
                             />
                         </div>
                         <div>
-                            <p>{dataObj.description}</p>
+                            <h5>{dataObj.description}</h5>
                         </div>
                         <div>
                             
@@ -65,10 +65,11 @@ export default function RenderCartItems() {
                         </div>
                     </div>
 
-
+                    <hr/>
                 </div>
             ))
                             }
+                           
             </>
             :
                

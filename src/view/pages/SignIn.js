@@ -43,18 +43,19 @@ const SignIn = () => {
               <input className='width-50 ht-40' value = {mobile} onChange={(e)=>setmobile(e.target.value)} placeholder='MobileNumber'/>
               </div>
               <div>
-                <Button className='width-50' variant="success" onClick={sendOtp} >Continue</Button>
+              <Button onClick={sendOtp}  style={{backgroundColor: "#42a2a2", border: "none", width: "50%", height: "60px", fontSize: "30px"}}>Continue</Button>{' '}
+
+                {/* <Button className='width-50' variant="success"  >Continue</Button> */}
               </div>
             </form>
           </div>
           <hr/>
           <div>
-            <div className='email-sign-in' onClick={() =>{navigate('/email_log_in')}}>
-              CONTINUE WITH EMAIL
-            </div>
-            <div className='email-sign-in mar-tp-10' onClick={() =>{navigate('/signup')}}>
-              Sign Up
-            </div>
+
+          <Button variant="warning" style={{border: "none",marginLeft: "25%", width: "50%", height: "60px", fontSize: "25px"}} onClick={() =>{navigate('/email_log_in')}} >CONTINUE WITH EMAIL </Button>{' '}
+ <Button variant="dark" className='mar-tp-10' style={{border: "none",marginLeft: "25%", width: "50%", height: "60px", fontSize: "25px"}} onClick={() =>{navigate('/signup')}}>Sign Up </Button>{' '}
+
+
 
           </div>
             

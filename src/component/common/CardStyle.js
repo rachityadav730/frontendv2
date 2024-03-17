@@ -21,7 +21,7 @@ const CardStyle = ({ item_data }) => {
           <Col key={item.id} style={{ paddingLeft: '80px'}}>
            
             <Card key={item.id} style={{ width: '18rem',marginBottom: "20px" }}>
-              <Card.Img variant="top" src={item.img_url} />
+              <Card.Img variant="top" src={item.permalink} />
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>

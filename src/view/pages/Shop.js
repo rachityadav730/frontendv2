@@ -8,8 +8,16 @@ const Shop = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/v1/get_items');
 
+        const params = {
+          param1: 'value1',
+          param2: 'value2'
+        };
+        
+        const url = new URL('http://localhost:3000/api/v1/products');
+        url.response = new URLSearchParams(params).toString();
+
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

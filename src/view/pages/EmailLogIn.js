@@ -2,6 +2,7 @@ import React from 'react'
 import { Formik } from 'formik';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { Input } from "@material-tailwind/react";
 
 const EmailLogIn = () => {
   return (
