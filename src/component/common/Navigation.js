@@ -5,11 +5,14 @@ import {
   Link, NavLink, useLocation
 } from 'react-router-dom';
 import { useSelector } from "react-redux"
+import DropDown from './DropDown'
 
 const Navigation = () => {
   const navbar = useRef(null);
   const { pathname } = useLocation();
   const {total, totalItems} = useSelector((state) => state.cart) 
+  const {user} = useSelector((state) => state.user) 
+
   const scrollHandler = () => {
     if (navbar.current && window.screen.width > 480) {
       if (window.pageYOffset >= 70) {
@@ -25,7 +28,7 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', scrollHandler);
   }, []);
 
-  console.log("read values ROUTE", total,totalItems)
+  console.log("read values ROUTE", total,totalItems,user)
   return (
     <div className="">
   <div className="nav_container">
@@ -90,7 +93,12 @@ const Navigation = () => {
             <div style={{marginLeft: "7px"}}>
               <p style={{marginBottom: "6.5px"}}> 
                 </p>
-                <h4 ><a href="/signin" style={{color: "#663399"}}>Login</a></h4>
+                {
+                   Object.keys(user).length > 0  ?
+                      <DropDown user_data = {user}/>
+                   :  <h4 ><a href="/signin" style={{color: "#663399"}}>Login</a></h4>
+                }
+               
             </div>
         </div>
         
