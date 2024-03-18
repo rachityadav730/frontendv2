@@ -4,11 +4,14 @@ import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { removeFromCart } from '../../Slices/CartSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TextField from '@mui/material/TextField';
 const ShippingData = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const {cart} = useSelector((state) => state.cart) 
+
   const handleCart = () => {
     dispatch(removeFromCart([])); 
     return;
@@ -30,6 +33,7 @@ const ShippingData = () => {
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true); // Set submitting state to true before making the request
           const API_URL = 'http://localhost:3000/api/v1/addresses';
+          const API_URL1 = 'http://localhost:3000/api/v1/orders';
           const address_data = {
             first_name: values.first_name,
             last_name: values.last_name,
@@ -38,7 +42,7 @@ const ShippingData = () => {
             state_name: values.state_name,
             country: values.country,
             zip_code: values.zip_code,
-            alternative_phone: values.phone_number,
+            alternative_phone: values.phone_number
           };
           try {
 
@@ -48,13 +52,13 @@ const ShippingData = () => {
               'authorization':  localStorage.getItem("token") , // Include Bearer token
             };       
             const response = await axios.post(API_URL, { address: address_data }, { headers });
-
-            console.log("sadfasdf123123",response)
             if (response.status == 200){
+              const cart_data = await axios.post(API_URL1, { cart: address_data }, { headers });
+              if (cart_data.status ==200){
                 handleCart()
                 navigate('/')
+              }
             }
-
             // Handle successful response, e.g., redirect user or display success message
           } catch (error) {
             console.error("Error:", error);

@@ -3,11 +3,12 @@ import { Formik } from 'formik';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
-
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
     const [mobile, setmobile] = useState('')
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
   return (
     <div className='bg-yellow height-100 text-center'>
     <div>
@@ -30,8 +31,13 @@ const SignUp = () => {
             }
               try {
                 setLoading(true);
-                const response = await axios.post('http://localhost:3000/signup', {user});
+                const response = await axios.post('http://localhost:3000/signup', { user }, { headers: {
+                  'content-type': 'application/json',
+                  'accept': 'application/json'
+                }});
+                // const response = await axios.post('http://localhost:3000/signup', {user});
                 console.log('Response:', response.data);
+                navigate('/signin')
                 // Handle the response data as needed
               } catch (error) {
                 console.error('Error:', error.message);

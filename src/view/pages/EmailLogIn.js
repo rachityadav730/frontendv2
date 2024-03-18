@@ -30,11 +30,11 @@ const EmailLogIn = () => {
             password: values.password
           };
           try {
+            const response = await axios.post(API_URL, { user }, { headers: {
+              'content-type': 'application/json',
+              'accept': 'application/json'
+          }});
 
-
-            const response = await axios.post(API_URL, { user }, {headers: {
-              'Access-Control-Expose-Headers': 'Authorization'
-            }});
             console.log("Response:",response.headers,response.headers['authorization'], response.data.status.data.user);
             if (response.data && response.data.status && response.data.status.data.user){
                 let user = response.data.status.data.user
