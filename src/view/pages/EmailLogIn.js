@@ -30,15 +30,17 @@ const EmailLogIn = () => {
             password: values.password
           };
           try {
-            const response = await axios.post(API_URL, { user });
-            console.log("Response:", response.data.status.data.user);
+
+
+            const response = await axios.post(API_URL, { user }, {headers: {
+              'Access-Control-Expose-Headers': 'Authorization'
+            }});
+            console.log("Response:",response.headers,response.headers['authorization'], response.data.status.data.user);
             if (response.data && response.data.status && response.data.status.data.user){
                 let user = response.data.status.data.user
                 const headers = response.headers;
-                // Access specific header values
                 const contentType = headers['content-type'];
                 const authorization = headers['authorization'];
-                localStorage.setItem("accessToken", response.data.status.token);
                 localStorage.setItem("actualtoken", authorization);
                 localStorage.setItem("contentType", contentType);
                 console.log("sadfasdfasdf",response,headers,response.data.status.token)

@@ -43,6 +43,15 @@ const cartSlice = createSlice({
                 localStorage.setItem("totalItems", JSON.stringify(state.totalItems)) 
                 toast.success("Item removed from cart")
             }
+            else{
+                state.cart = []
+                state.total = 0
+                state.totalItems = 0
+                localStorage.setItem("cart", [])
+                localStorage.setItem("total", 0)
+                localStorage.setItem("totalItems", 0) 
+                toast.success("Order is Successfully Placed")
+            }
         },
  
     }

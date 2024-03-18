@@ -3,15 +3,14 @@ import { Formik } from 'formik';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-import { currentUser } from '../../Slices/UserSlice';
+import { removeFromCart } from '../../Slices/CartSlice';
 import { useDispatch } from 'react-redux';
 import TextField from '@mui/material/TextField';
 const ShippingData = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleUser = (user) => {
-    console.log("dispatching add to cart",user)
-    dispatch(currentUser(user)); 
+  const handleCart = () => {
+    dispatch(removeFromCart([])); 
     return;
   }
   return (
@@ -46,15 +45,16 @@ const ShippingData = () => {
             const token = localStorage.getItem('accessToken');
             const headers = {
               'Content-Type': 'application/json', // Assuming JSON content type
-              Authorization: `Bearer ${token}`, // Include Bearer token
-            };            
+              'authorization':  localStorage.getItem("token") , // Include Bearer token
+            };       
             const response = await axios.post(API_URL, { address: address_data }, { headers });
-            console.log("Response:", response.data.status.data.user);
-            if (response.data && response.data.status && response.data.status.data.user){
-                let data = response.data
-                // navigate('/')
+
+            console.log("sadfasdf123123",response)
+            if (response.status == 200){
+                handleCart()
+                navigate('/')
             }
-           
+
             // Handle successful response, e.g., redirect user or display success message
           } catch (error) {
             console.error("Error:", error);
